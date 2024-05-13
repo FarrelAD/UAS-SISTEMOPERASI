@@ -2,13 +2,13 @@
 
 ulangiMenu=y
 while [ $ulangiMenu == "y" ]; do
-    echo "====================================================="
-    echo "-- Selamat datang di menu serbaguna komputer anda --"
-    echo "-----------------------------------------------------"
+    echo "===================================================="
+    echo $'\033[0;32m-- Selamat datang di menu serbaguna komputer anda -- \033[0m'
+    echo "----------------------------------------------------"
     echo "Silakan pilih salah satu menu berikut"
     echo "  1. Lihat path direktori saat ini"
     echo "  2. Membuat folder baru"
-    echo "-----------------------------------------------------"
+    echo "----------------------------------------------------"
     read -p " >>> " pilihan
 
     case $pilihan in
@@ -18,9 +18,9 @@ while [ $ulangiMenu == "y" ]; do
         2)
             read -p "Masukkan nama folder baru: " namaFolder
             if mkdir $namaFolder; then
-                echo "Folder $namaFolder berhasil dibuat."
+                echo -e "Folder \033[0;33m$namaFolder\033[0m berhasil dibuat."
             else
-                echo "Gagal membuat folder $namaFolder. Folder mungkin sudah ada."
+                echo -e "Gagal membuat folder \033[0;33mT$namaFolder\033[0m. Folder mungkin sudah ada."
             fi
             ;;
         3)
@@ -31,6 +31,7 @@ while [ $ulangiMenu == "y" ]; do
             ;;
     esac
 
-        echo "-----------------------------------------------------"
-    read -p "Ingin kembali ke menu? (y/n): " ulangiMenu
+    echo -e "\n----------------------------------------------------"
+    read -ep $'\033[0;32mIngin kembali ke menu? (y/n): \033[0m' ulangiMenu
+    clear
 done
