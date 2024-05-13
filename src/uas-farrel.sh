@@ -6,8 +6,9 @@ while [ $ulangiMenu == "y" ]; do
     echo $'\033[0;32m-- Selamat datang di menu serbaguna komputer anda -- \033[0m'
     echo "----------------------------------------------------"
     echo "Silakan pilih salah satu menu berikut"
-    echo "  1. Lihat path direktori saat ini"
-    echo "  2. Membuat folder baru"
+    echo "  1. Lihat path direktori saat ini"
+    echo "  2. Membuat folder baru"
+    echo "  3. Cari sebuah file"
     echo "----------------------------------------------------"
     read -p " >>> " pilihan
 
@@ -24,7 +25,14 @@ while [ $ulangiMenu == "y" ]; do
             fi
             ;;
         3)
-            echo "Pilihan 3 belum tersedia."
+            read -p "Masukkan nama file yang ingin dicari: " fileDicari
+            filePath=$(find / -type f -name "$fileDicari" -print -quit 2> /dev/null)
+            if [ -n "$filePath" ]; then
+                echo -e "\n\033[0;32mFile ditemukan !\033[0m"
+                echo "$filePath"
+            else
+                echo -e "\033[0;32mFile tidak dapat ditemukan !\033[0m"
+            fi
             ;;
         *)
             echo "Pilihan tidak valid."
