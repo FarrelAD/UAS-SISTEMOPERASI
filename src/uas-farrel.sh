@@ -11,6 +11,7 @@ while [ $ulangiMenu == "y" ]; do
     echo "  2. Membuat folder baru"
     echo "  3. Cari sebuah file"
     echo "  4. Buat catatan"
+    echo "  5. Baca file"
     echo "----------------------------------------------------"
     read -p " >>> " pilihan
 
@@ -46,6 +47,10 @@ while [ $ulangiMenu == "y" ]; do
             else 
                 echo "Error: catatan gagal dibuat!"
             fi
+            ;;
+        5)
+            read -p "Masukkan file yang ingin dibaca: " fileDicari
+            cat $fileDicari
             ;;
         *)
             echo "Pilihan tidak valid."
