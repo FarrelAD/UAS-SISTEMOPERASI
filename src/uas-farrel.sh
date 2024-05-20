@@ -9,6 +9,7 @@ while [ $ulangiMenu == "y" ]; do
     echo "  1. Lihat path direktori saat ini"
     echo "  2. Membuat folder baru"
     echo "  3. Cari sebuah file"
+    echo "  4. Buat catatan"
     echo "----------------------------------------------------"
     read -p " >>> " pilihan
 
@@ -32,6 +33,17 @@ while [ $ulangiMenu == "y" ]; do
                 echo "$filePath"
             else
                 echo -e "\033[0;32mFile tidak dapat ditemukan !\033[0m"
+            fi
+            ;;
+        4)
+            echo "Masukkan catatan (Ctrl + D to exit)"
+            echo "----------------------------------------------------"
+            cat - > myNotes.txt
+            echo "----------------------------------------------------"
+            if [ $? -eq 0 ]; then
+                echo "Catatan berhasil dibuat!"
+            else 
+                echo "Error: catatan gagal dibuat!"
             fi
             ;;
         *)
