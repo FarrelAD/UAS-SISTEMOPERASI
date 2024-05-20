@@ -3,6 +3,7 @@
 ulangiMenu=y
 while [ $ulangiMenu == "y" ]; do
     echo "===================================================="
+    echo "               --[ Jam : $(date +%T) ]--         "
     echo $'\033[0;32m-- Selamat datang di menu serbaguna komputer anda -- \033[0m'
     echo "----------------------------------------------------"
     echo "Silakan pilih salah satu menu berikut"
