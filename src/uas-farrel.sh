@@ -12,6 +12,7 @@ while [ $ulangiMenu == "y" ]; do
     echo "  3. Cari sebuah file"
     echo "  4. Buat catatan"
     echo "  5. Baca file"
+    echo "  6. Give me a motivation!"
     echo "----------------------------------------------------"
     read -p " >>> " pilihan
 
@@ -51,6 +52,29 @@ while [ $ulangiMenu == "y" ]; do
         5)
             read -p "Masukkan file yang ingin dibaca: " fileDicari
             cat $fileDicari
+            ;;
+        6)
+            allQuotes=("Don’t compare yourself with anyone in this world. If you do so, you are insulting yourself. - Bill Gates" "Invention requires a long-term willingness to be misunderstood. - Jeff Bezos" "Persistence is very important. You should not give up unless you are forced to give up. - Elon Musk" "The only way to do great work is to love what you do. - Steve Wozniak" "The way to do really big things seems to be to start with deceptively small things.  - Paul Graham")
+
+            currentSecond=$(date +%S)
+            secondModulo5=$((currentSecond % 5))
+            case $secondModulo5 in
+                0)
+                    echo -e "\n\033[0;33m${allQuotes[0]}\033[0m"
+                    ;;
+                1)
+                    echo -e "\n\033[0;33m${allQuotes[1]}\033[0m"
+                    ;;
+                2)
+                    echo -e "\n\033[0;33m${allQuotes[2]}\033[0m"
+                    ;;
+                3)
+                    echo -e "\n\033[0;33m${allQuotes[3]}\033[0m"
+                    ;; 
+                4)
+                    echo -e "\n\033[0;33m${allQuotes[4]}\033[0m"
+                    ;;
+            esac
             ;;
         *)
             echo "Pilihan tidak valid."
