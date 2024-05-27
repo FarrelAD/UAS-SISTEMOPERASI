@@ -19,3 +19,4 @@
 | 4 | Membuat catatan | Membuat sebuah file dengan menggunakan perintah `cat - > $fileName` |
 | 5 | Membaca file | Membaca file yang telah dibuat menggunakan perintah `cat ../sample/notes/$fileToRead` |
 | 6 | Operasi kalkulator sederhana | Bisa melakukan operasi penjumlahan, pengurangan, perkalian, dan pembagian. Kode secara umum menggunakan arithmatic expression dengan perintah `result=$(($number1 + $number2))`. Untuk pembagian menggunakan perintah `awk` (`result=$(awk "BEGIN { print $number1 / $number2 }")`) agar hasil yang didapat lebih presisi |
+| 7 | System monitoring | Melihat statistik penggunaan komputer seperti memory, CPU, task info, dan masih banyak lagi dengan perintah `htop` |
