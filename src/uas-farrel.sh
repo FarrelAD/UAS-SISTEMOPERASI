@@ -13,7 +13,8 @@ show_menu() {
     echo "  5. Baca file"
     echo "  6. Kalkulator"
     echo "  7. System monitoring"
-    echo "  8. Give me a motivation!"
+    echo "  8. TIMER!"
+    echo "  9. Give me a motivation!"
     echo "----------------------------------------------------"
 }
 
@@ -99,6 +100,21 @@ calculator() {
     echo -e "Hasilnya: \033[0;33m$result\033[0m"
 }
 
+run_timer() {
+    read -p "Set timer (detik): " timerSecondSet
+    read -p "Pesan timer ketika selesai: " timerMessage
+
+    start_timer() {
+        sleep $timerSecondSet
+        echo -e "\n=======================TIMER========================"
+        echo -e "\033[0;33m$timerMessage\033[0m"
+        echo "===================================================="
+    }
+
+    start_timer &
+    echo "Timer dimulai selama $timerSecondSet detik. PID: $!"
+}
+
 give_motivation() {
     allQuotes=("Don’t compare yourself with anyone in this world. If you do so, you are insulting yourself. - Bill Gates" "Invention requires a long-term willingness to be misunderstood. - Jeff Bezos" "Persistence is very important. You should not give up unless you are forced to give up. - Elon Musk" "The only way to do great work is to love what you do. - Steve Wozniak" "The way to do really big things seems to be to start with deceptively small things.  - Paul Graham")
 
@@ -151,6 +167,9 @@ while [ $ulangiMenu == "y" ]; do
             htop
             ;;
         8)
+            run_timer
+            ;;
+        9)
             give_motivation
             ;;
         *)
