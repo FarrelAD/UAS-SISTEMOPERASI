@@ -1,5 +1,40 @@
 # Code by Farrel Augusta Dinata
 
+calculator() {
+    echo -e "\n===================================================="
+    echo "Pilih opsi menu"
+    echo "----------------------------------------------------"
+    echo "  1. Penjumlahan"
+    echo "  2. Pengurangan"
+    echo "  3. Perkalian"
+    echo "  4. Pembagian"
+    read -p " >>> " pilihan
+
+    read -p "Masukkan bilangan pertama: " number1
+    read -p "Masukkan bilangan kedua: " number2
+
+    unset result
+    case $pilihan in
+        1)
+            result=$(($number1 + $number2))
+            ;;
+        2)
+            result=$(($number1 - $number2))
+            ;;
+        3)
+            result=$(($number1 * $number2))
+            ;;
+        4)
+            result=$(awk "BEGIN { print $number1 / $number2 }")
+            ;;  
+        *)
+            echo "Pilihan tidak valid!"
+            ;;
+    esac
+    echo -e "Hasilnya: \033[0;33m$result\033[0m"
+}
+
+
 ulangiMenu=y
 while [ $ulangiMenu == "y" ]; do
     echo "===================================================="
@@ -12,7 +47,8 @@ while [ $ulangiMenu == "y" ]; do
     echo "  3. Cari sebuah file"
     echo "  4. Buat catatan"
     echo "  5. Baca file"
-    echo "  6. Give me a motivation!"
+    echo "  6. Kalkulator"
+    echo "  7. Give me a motivation!"
     echo "----------------------------------------------------"
     read -p " >>> " pilihan
 
@@ -54,6 +90,9 @@ while [ $ulangiMenu == "y" ]; do
             cat $fileDicari
             ;;
         6)
+            calculator
+            ;;
+        7)
             allQuotes=("Don’t compare yourself with anyone in this world. If you do so, you are insulting yourself. - Bill Gates" "Invention requires a long-term willingness to be misunderstood. - Jeff Bezos" "Persistence is very important. You should not give up unless you are forced to give up. - Elon Musk" "The only way to do great work is to love what you do. - Steve Wozniak" "The way to do really big things seems to be to start with deceptively small things.  - Paul Graham")
 
             currentSecond=$(date +%S)
