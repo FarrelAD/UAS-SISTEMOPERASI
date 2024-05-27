@@ -12,7 +12,8 @@ show_menu() {
     echo "  4. Buat catatan"
     echo "  5. Baca file"
     echo "  6. Kalkulator"
-    echo "  7. Give me a motivation!"
+    echo "  7. System monitoring"
+    echo "  8. Give me a motivation!"
     echo "----------------------------------------------------"
 }
 
@@ -122,7 +123,6 @@ give_motivation() {
     esac
 }
 
-
 ulangiMenu=y
 while [ $ulangiMenu == "y" ]; do
     show_menu
@@ -148,6 +148,9 @@ while [ $ulangiMenu == "y" ]; do
             calculator
             ;;
         7)
+            htop
+            ;;
+        8)
             give_motivation
             ;;
         *)
