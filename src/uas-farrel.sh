@@ -20,7 +20,7 @@ show_menu() {
 
 make_dir() {
     read -p "Masukkan nama folder baru: " namaFolder
-    if mkdir $namaFolder; then
+    if mkdir ../sample/$namaFolder; then
         echo -e "Folder \033[0;33m$namaFolder\033[0m berhasil dibuat."
     else
         echo -e "Gagal membuat folder \033[0;33mT$namaFolder\033[0m. Folder mungkin sudah ada."
