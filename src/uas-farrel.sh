@@ -11,10 +11,11 @@ show_menu() {
     echo "  3. Cari sebuah file"
     echo "  4. Buat catatan"
     echo "  5. Baca file"
-    echo "  6. Kalkulator"
-    echo "  7. System monitoring"
-    echo "  8. TIMER!"
-    echo "  9. Give me a motivation!"
+    echo "  6. GitHub repository log"
+    echo "  7. Kalkulator"
+    echo "  8. System monitoring"
+    echo "  9. TIMER!"
+    echo "  10. Give me a motivation!"
     echo "----------------------------------------------------"
 }
 
@@ -64,6 +65,27 @@ read_file() {
     echo ""
     cat ../sample/notes/$fileToRead
     rm ls_output.txt
+}
+
+show_git_log() {
+    echo "===================================================="
+    echo "Masukkan alamat kloningan repositori GitHub: "
+    # read clonedGithubRepo
+    # echo "Kloningan repositori yang anda miliki: "
+
+    echo "----------------------------------------------------"
+    git --git-dir=/mnt/d/03-STORAGE/03-GitHub/01-REPOSITORY/WEB-MANGGA-LESTARI/.git log --oneline
+    echo "----------------------------------------------------"
+    read -p "Simpan pesan commit (y/n)? " isWantToSaveCommitLog
+    if [[ "$isWantToSaveCommitLog" == "y"  ||  "$isWantToSaveCommitLog" == "Y" ]]; then
+        read -p "Nama file: " fileGitlogName
+        git --git-dir=/mnt/d/03-STORAGE/03-GitHub/01-REPOSITORY/WEB-MANGGA-LESTARI/.git log --oneline > ../sample/gitlog/$fileGitlogName
+        if [ $? -eq 0  ]; then
+            echo "Git commit log telah berhasil dibuat!"
+        else
+            echo "Git commit log gagal dibuat!"
+        fi
+    fi
 }
 
 calculator() {
@@ -161,15 +183,18 @@ while [ $ulangiMenu == "y" ]; do
             read_file
             ;;
         6)
-            calculator
+            show_git_log
             ;;
         7)
-            htop
+            calculator
             ;;
         8)
-            run_timer
+            htop
             ;;
         9)
+            run_timer
+            ;;
+        10)
             give_motivation
             ;;
         *)
