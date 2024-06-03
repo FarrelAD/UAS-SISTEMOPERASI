@@ -5,8 +5,7 @@
 | NIM | **2341720081** |
 | Nama Lengkap | **Farrel Augusta Dinata** |
 | Kelas | TI-1B |
-| Dosen Pembimbing 1 | [Erfan Rohadi, ST., M.Eng., Ph.D](https://scholar.google.co.id/citations?user=i9ivLAkAAAAJ&hl=id) |
-| Dosen Pembimbing 2 | [Mohammad Faried Rahmat, S.ST., M.Tr.T](https://github.com/fariedrahmat) |
+| Dosen Pembimbing 1 | [Erfan Rohadi, ST., M.Eng., Ph.D](https://scholar.google.co.id/citations?user=i9ivLAkAAAAJ&hl=id) <br> [Mohammad Faried Rahmat, S.ST., M.Tr.T](https://github.com/fariedrahmat) |
 
 # SISTEM OPERASI
 ### Fitur Program Shell script
@@ -22,3 +21,4 @@
 | 7 | Operasi kalkulator sederhana | Bisa melakukan operasi penjumlahan, pengurangan, perkalian, dan pembagian. Kode secara umum menggunakan arithmatic expression dengan perintah `result=$(($number1 + $number2))`. Untuk pembagian menggunakan perintah `awk` (`result=$(awk "BEGIN { print $number1 / $number2 }")`) agar hasil yang didapat lebih presisi |
 | 8 | System monitoring | Melihat statistik penggunaan komputer seperti memory, CPU, task info, dan masih banyak lagi dengan perintah `htop` |
 | 9 | Simple timer | Melakukan hitung mundur yang dilakukan di background proses dengan memanfaatkan perintah berikut: `sleep` dan `&` untuk menjalankan proses di background |
+| 10 | Custom command | Bisa membuat custom command dengan memanfaatkan perintah `alias` |
