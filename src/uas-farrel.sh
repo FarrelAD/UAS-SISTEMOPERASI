@@ -69,17 +69,32 @@ read_file() {
 
 show_git_log() {
     echo "===================================================="
-    echo "Masukkan alamat kloningan repositori GitHub: "
-    # read clonedGithubRepo
-    # echo "Kloningan repositori yang anda miliki: "
+    # Alamat direktori disimpan di dalam sebuah variabel
+    parentClonedGithubRepoPath=""
+    if [ ! -d "$parentClonedGithubRepoPath" ]; then
+        echo "Masukkan alamat parent kloningan repositori GitHub: "
+        read parentClonedGithubRepoPath
+    fi
+    
+    echo "Kloningan repositori yang anda miliki: "
+    # Cek apakah subdirektori dari parent adalah kloningan github repository
+    # Kemudian akan dicetak
+    for dir in "$parentClonedGithubRepoPath"/*/ ; do
+        if [ -d "$dir/.git" ]; then
+            echo -e "\033[1;37;43m $(basename "$dir") \033[0m"
+        fi
+    done
 
     echo "----------------------------------------------------"
-    git --git-dir=/mnt/d/03-STORAGE/03-GitHub/01-REPOSITORY/WEB-MANGGA-LESTARI/.git log --oneline
+    read -p "Pilih direktori: " selectedDirectory
+    # Melakukan pengecekan tracking git commit yang telah dilakukan
+    git --git-dir="$parentClonedGithubRepoPath/$selectedDirectory/.git" log --oneline
     echo "----------------------------------------------------"
     read -p "Simpan pesan commit (y/n)? " isWantToSaveCommitLog
+    # Menyimpan hasil dari git log ke dalam sebuah file
     if [[ "$isWantToSaveCommitLog" == "y"  ||  "$isWantToSaveCommitLog" == "Y" ]]; then
         read -p "Nama file: " fileGitlogName
-        git --git-dir=/mnt/d/03-STORAGE/03-GitHub/01-REPOSITORY/WEB-MANGGA-LESTARI/.git log --oneline > ../sample/gitlog/$fileGitlogName
+        git --git-dir="$parentClonedGithubRepoPath/$selectedDirectory/.git" log --oneline > ../sample/gitlog/$fileGitlogName
         if [ $? -eq 0  ]; then
             echo "Git commit log telah berhasil dibuat!"
         else
