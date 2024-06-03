@@ -16,6 +16,7 @@ show_menu() {
     echo "  8. System monitoring"
     echo "  9. TIMER!"
     echo "  10. Give me a motivation!"
+    echo "  11. ^CUSTOM COMMAND^"
     echo "----------------------------------------------------"
 }
 
@@ -104,7 +105,7 @@ show_git_log() {
 }
 
 calculator() {
-    echo -e "\n===================================================="
+    echo "===================================================="
     echo "Pilih opsi menu"
     echo "----------------------------------------------------"
     echo "  1. Penjumlahan"
@@ -176,10 +177,77 @@ give_motivation() {
     esac
 }
 
+
+create_custom_command() {
+    shopt -s expand_aliases
+
+    read -p "Masukkan command yang ingin digunakan: " usedCommand
+    read -p "Masukkan alias: " aliasCommand
+    echo "----------------------------------------------------"
+
+    # Menambahkan custom command ke ~/.bashrc agar ketika program berhenti
+    # Custom command tetap bisa dijalankan
+    echo "alias $aliasCommand='$usedCommand'" >> ~/.bashrc
+    source ~/.bashrc
+    
+    # Mengecek apakah alias sudah benar-benar dibuat
+    if grep -q "^alias $aliasCommand='$usedCommand'" ~/.bashrc; then
+        echo "Custom command telah sukses dibuat!"
+    else
+        echo "Custom command gagal dibuat"
+    fi
+}
+
+show_custom_command() {
+    echo "Berikut adalah custom command yang telah anda buat:"
+    grep "^alias" ~/.bashrc
+}
+
+delete_custom_command() {
+    read -p "Masukkan command yang ingin dihapus: " deletedCommand
+    read -p "Masukkan alias yang ingin dihapus: " deletedAlias
+    echo "----------------------------------------------------"
+    
+    if grep -q "^alias $deletedAlias='$deletedCommand'" ~/.bashrc; then
+        # Menghapus custom command yang telah dibuat
+        sed -i "/^alias $deletedAlias='$deletedCommand'/d" ~/.bashrc
+        echo "Alias '$deletedAlias' untuk command '$deletedCommand' telah dihapus ~/.bashrc."
+    else
+        echo "Alias '$deletedAlias' untuk command '$deletedCommand' tidak ditemukan di  ~/.bashrc."
+    fi
+
+    source ~/.bashrc
+}
+
+custom_command() {
+    echo "===================================================="
+    echo "  1. Buat custom command"
+    echo "  2. Lihat custom command yang telah dibuat"
+    echo "  3. Hapus custom command"
+    read -p " >>> " pilhan
+    echo "----------------------------------------------------"
+
+    case $pilhan in
+        1)
+            create_custom_command
+            ;;
+        2)
+            show_custom_command
+            ;;
+        3)
+            delete_custom_command
+            ;;
+        *)
+            echo "Pilihan tidak valid."
+            ;;
+    esac
+}
+
 ulangiMenu=y
 while [ $ulangiMenu == "y" ]; do
     show_menu
     read -p " >>> " pilihan
+    clear
 
     case $pilihan in
         1)
@@ -211,6 +279,9 @@ while [ $ulangiMenu == "y" ]; do
             ;;
         10)
             give_motivation
+            ;;
+        11)
+            custom_command
             ;;
         *)
             echo "Pilihan tidak valid."
