@@ -5,7 +5,7 @@
 | NIM | **2341720081** |
 | Nama Lengkap | **Farrel Augusta Dinata** |
 | Kelas | TI-1B |
-| Dosen Pembimbing 1 | [Erfan Rohadi, ST., M.Eng., Ph.D](https://scholar.google.co.id/citations?user=i9ivLAkAAAAJ&hl=id) <br> [Mohammad Faried Rahmat, S.ST., M.Tr.T](https://github.com/fariedrahmat) |
+| Dosen Pembimbing | [Erfan Rohadi, ST., M.Eng., Ph.D](https://scholar.google.co.id/citations?user=i9ivLAkAAAAJ&hl=id) <br> [Mohammad Faried Rahmat, S.ST., M.Tr.T](https://github.com/fariedrahmat) |
 
 # SISTEM OPERASI
 ### Fitur Program Shell script
